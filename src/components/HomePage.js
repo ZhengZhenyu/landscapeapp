@@ -10,6 +10,7 @@ import Sorting from './Sorting';
 import PresetsContainer from './PresetsContainer';
 import Ad from './Ad';
 import AutoSizer from './CustomAutoSizer';
+import OutboundLink from './OutboundLink';
 import {
   LandscapeContentContainer,
   SwitchButtonContainer,
@@ -156,10 +157,10 @@ const HomePage = ({isEmbed, mainContentMode, ready, hasSelectedItem, filtersVisi
       <div />
       <div style={{marginTop: (isIphone && hasSelectedItem) ? -state.lastScrollPosition : 0}} className={classNames({"iphone-scroller": isIphone && hasSelectedItem}, 'main-parent')} >
         { !isEmbed && !isFullscreen && <HeaderContainer/> }
-        { !isEmbed && !isFullscreen && <IconButton className="sidebar-show" onClick={showFilters}><MenuIcon /></IconButton> }
+        { !isEmbed && !isFullscreen && <IconButton className="sidebar-show" title="Show sidebar" onClick={showFilters}><MenuIcon /></IconButton> }
         { !isEmbed && !isFullscreen && <div className="sidebar">
           <div className="sidebar-scroll">
-            <IconButton className="sidebar-collapse" onClick={hideFilters}><CloseIcon /></IconButton>
+            <IconButton className="sidebar-collapse" title="Hide sidebar" onClick={hideFilters}><CloseIcon /></IconButton>
             <ResetFiltersContainer />
             <Grouping/>
             <Sorting/>
@@ -178,7 +179,7 @@ const HomePage = ({isEmbed, mainContentMode, ready, hasSelectedItem, filtersVisi
         <div className={classNames('main', {'embed': isEmbed})}>
           { !isEmbed && <div className="disclaimer">
             <span  dangerouslySetInnerHTML={{__html: settings.home.header}} />
-            Please <a target="_blank" href={`https://github.com/${settings.global.repo}`}>open</a> a pull request to
+            Please <OutboundLink to={`https://github.com/${settings.global.repo}`}>open</OutboundLink> a pull request to
             correct any issues. Greyed logos are not open source. Last Updated: {window.lastUpdated}
           </div> }
           { !isEmbed && <SummaryContainer /> }

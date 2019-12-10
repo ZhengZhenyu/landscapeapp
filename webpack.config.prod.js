@@ -5,7 +5,7 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import WebappWebpackPlugin from 'webapp-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 import {projectPath, settings} from './tools/settings';
@@ -82,12 +82,17 @@ export default {
       settings: settings
     }),
     // Generate manifest and logos
-    new WebappWebpackPlugin({
+    new FaviconsWebpackPlugin({
         logo: path.resolve(projectPath, 'images/favicon.png'),
         prefix: '',
         favicons: {
           appName: settings.global.name,
           icons: {
+            appleIcon: false,
+            appleStartup: false,
+            firefox: false,
+            coast: false,
+            windows: false,
             yandex: false
           }
         }
